@@ -1,0 +1,45 @@
+<!--<md-toolbar color="primary" flex>
+	<md-icon (click)="sidenav.toggle()" class="pointer">menu</md-icon>
+	<img class="avatarimage" [src]='avatarPath' (click)="sidenav.toggle()" />
+</md-toolbar>
+<md-sidenav-container>
+	<md-sidenav #sidenav mode="side" opened="false">
+		<nav-menu></nav-menu>
+	</md-sidenav>
+	<router-outlet></router-outlet>
+	  <td-layout-footer color="primary">
+    ... main footer content
+  </td-layout-footer>
+
+</md-sidenav-container>
+
+-->
+
+<td-layout-nav navigationRoute="/">
+	<div td-toolbar-content layout="row" layout-align="center center" flex>
+		<!--<md-icon (click)="sidenav.toggle(); " class="pointer">menu</md-icon>-->
+		<md-icon (click)='toggleMenu()' class="pointer">menu</md-icon>
+		<img class="avatarimage hidden-xs" *ngIf='showSmallAvatar' [src]='avatarSmallPath' />
+		<span class="ml-15 toolbar-header" *ngIf='showSmallAvatar'>{{getInitials()}}</span>
+		<span flex></span>
+		<a md-icon-button mdTooltip="Логин" href="/" target="_blank">
+			<md-icon>chrome_reader_mode</md-icon>
+		</a>
+
+	</div>
+	<md-sidenav-container>
+		<md-sidenav #sideNav mode="side" opened="true" style="min-height: 100px;">
+			<nav-menu></nav-menu>
+		</md-sidenav>
+		<div class="main-content">Main content
+			<router-outlet></router-outlet>
+		</div>
+
+	</md-sidenav-container>
+	<td-layout-footer >
+
+	Optional footer
+
+
+	</td-layout-footer>
+</td-layout-nav>

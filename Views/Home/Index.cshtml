@@ -1,0 +1,12 @@
+<!--<app asp-prerender-module="ClientApp/dist/main-server">Loading...</app>-->
+<app>
+<div style="padding: 20%;text-align:center;height:100%;background-color:#546E7A;color:#B0BEC5;">
+      <img src="~/img/loader.gif" >
+      <h3>Загружаемся....</h3>
+    </div>
+
+</app>
+<script src="~/dist/vendor.js" asp-append-version="true"></script>
+@section scripts {
+    <script src="~/dist/main-client.js" asp-append-version="true"></script>
+}

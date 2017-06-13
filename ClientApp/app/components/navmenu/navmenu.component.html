@@ -1,0 +1,16 @@
+<div class="flex-container"
+     fxLayout="row"
+     fxLayout.xs="column"
+     fxLayoutAlign="center center">
+<img class="avatarimage" [src]='avatarPath' layout-align="center center"/>
+</div>
+<md-toolbar color="accent">
+
+	<span class="lastfirstname" *ngIf="userProfile">{{getInitials()}}</span>
+</md-toolbar>
+<md-nav-list>
+	<ng-template let-item let-last="last" ngFor [ngForOf]="routes">
+		<a md-list-item [routerLink]="[item.route]">
+			<md-icon>{{item.icon}}</md-icon>{{item.title}}</a>
+	</ng-template>
+</md-nav-list>
