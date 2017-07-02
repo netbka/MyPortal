@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
+//using MyPortal.Entity;
 
 namespace MyPortal
 {
@@ -29,12 +31,22 @@ namespace MyPortal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+			//Add DbContext
+			string connection = Configuration.GetConnectionString("DefaultConnection");
 			services.AddMvc()
 			.AddJsonOptions(opts =>
 			{
 				opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 			});
+
+            // добавляем контекст MobileContext в качестве сервиса в приложение
+            // services.AddDbContext<MyPortalContext>(options =>options.UseSqlServer(connection));
+            // // Add framework services.
+			// services.AddMvc()
+			// .AddJsonOptions(opts =>
+			// {
+			// 	opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+			// });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

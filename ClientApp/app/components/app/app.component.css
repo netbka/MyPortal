@@ -14,6 +14,8 @@ html, body, material-app, md-sidenav-container, .main-content {
     /*width: 150px;*/
     /*height: 150px;*/
     border-radius: 50%;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 .ml-15
 {
