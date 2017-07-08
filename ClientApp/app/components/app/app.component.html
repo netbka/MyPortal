@@ -22,9 +22,11 @@
 		<img class="avatarimage hidden-xs" *ngIf='showSmallAvatar' [src]='avatarSmallPath' />
 		<span class="ml-15 toolbar-header" *ngIf='showSmallAvatar'>{{getInitials()}}</span>
 		<span flex></span>
-		<a md-icon-button mdTooltip="Логин" href="/" target="_blank">
+		<button md-button mdTooltip="Логин" (click)="openDialog()">
 			<md-icon>account_box</md-icon>
-		</a>
+
+			</button>
+
 
 	</div>
 	<md-sidenav-container>
@@ -36,9 +38,9 @@
 		</div>
 
 	</md-sidenav-container>
-	<td-layout-footer >
+	<td-layout-footer>
 
-	Optional footer
+		Optional footer
 
 
 	</td-layout-footer>

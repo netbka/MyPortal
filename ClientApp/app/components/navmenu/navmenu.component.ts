@@ -3,6 +3,7 @@ import { IUser } from '../../interface/IUser';
 import { UserService } from '../../service/user.service';
 
 import { Observable } from 'rxjs/Observable';
+
 const pathToAvatar = require('../../../assets/img/avatar.jpg');
 
 @Component({
@@ -21,6 +22,7 @@ export class NavMenuComponent implements OnInit {
 	constructor(private _userService: UserService) {
 
 	 }
+
 
 	ngOnInit(): void {
 		this._userService.loadUserProfile()

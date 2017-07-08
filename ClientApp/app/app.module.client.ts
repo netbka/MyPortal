@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { sharedConfig } from './app.module.shared';
 import { UserService } from './service/user.service';
+import { MaterialModule } from '@angular/material';
+import { LoginComponent  } from './components/app/login/login.component';
 //import { CovalentLayoutModule, CovalentStepsModule /*, any other modules */ } from '@covalent/core';
 // (optional) Additional Covalent Modules imports
 // import { CovalentHttpModule } from '@covalent/http';
@@ -14,7 +16,7 @@ import { UserService } from './service/user.service';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
-    declarations: sharedConfig.declarations,
+    declarations:[LoginComponent, sharedConfig.declarations],
     imports: [
         BrowserModule,
         FormsModule,
@@ -27,12 +29,15 @@ import { UserService } from './service/user.service';
     // CovalentMarkdownModule,
     // CovalentDynamicFormsModule,
       BrowserAnimationsModule,
+	  MaterialModule,
+
         ...sharedConfig.imports
     ],
 
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin, },UserService
     ],
+	entryComponents: [LoginComponent],
 
 })
 export class AppModule {

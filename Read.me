@@ -1,0 +1,10 @@
+dotnet nuget locals --clear all  //Clear Nuget cache
+dotnet build //Build App
+dotnet run //Run app
+dotnet restore //Resote Nuget packages
+
+dotnet ef migrations add Initial  //Add Migration
+
+sqllocaldb info  mssqllocaldb //Show info (instead of info / start /stop)
+
+webpack --config webpack.config.vendor.js

@@ -10,6 +10,7 @@ import {
   MdCoreModule,
   MdDatepickerModule,
   MdDialogModule,
+
   MdGridListModule,
   MdIconModule,
   MdInputModule,
@@ -28,7 +29,9 @@ import {
   MdTabsModule,
   MdToolbarModule,
   MdTooltipModule,
-  OverlayContainer
+  //OverlayContainer,
+
+
 } from '@angular/material';
 
 
@@ -62,7 +65,8 @@ import {
     MdToolbarModule,
     MdTooltipModule,
     MdNativeDateModule,
-   
+
+
   ]
 })
 export class BootstrapMaterialModule {}

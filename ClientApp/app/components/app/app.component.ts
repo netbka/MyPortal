@@ -1,8 +1,7 @@
 import { Component, ViewEncapsulation, AfterViewInit, ChangeDetectorRef, ViewChild, OnInit } from '@angular/core';
-
 import { DomSanitizer } from '@angular/platform-browser';
-import { MdIconRegistry, Dir } from '@angular/material';
-import { MdSidenav } from '@angular/material';
+import {MdSidenav, MdIconRegistry, Dir,MdDialog} from '@angular/material';
+import { LoginComponent  } from './login/login.component';
 import { UserService } from '../../service/user.service';
 import { IUser } from '../../interface/IUser';
 import { Observable } from 'rxjs/Observable';
@@ -13,6 +12,7 @@ const pathToSmallAvatar = require('../../../assets/img/avatarSmall.png');
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css'],
 	encapsulation: ViewEncapsulation.None,
+
 	//providers: [UserService]
 
 })
@@ -30,10 +30,20 @@ export class AppComponent implements OnInit {
 	constructor(
 		private _changeDetectorRef: ChangeDetectorRef,
 		private _userService:UserService,
+		public dialog: MdDialog
 		//public media: TdMediaService,
 	) {}
 
+openDialog() {
+    let dialogRef = this.dialog.open(LoginComponent, {
+      height: '400px',
+      width: '600px'
+    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   //this.selectedOption = result;
+    // });
 
+  }
 
 
 	ngOnInit(): void {

@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using MyPortal.DAL.EF;
+using MyPortal.DAL.Entity.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 //using MyPortal.Entity;
 
 namespace MyPortal
@@ -39,14 +43,14 @@ namespace MyPortal
 				opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 			});
 
-            // добавляем контекст MobileContext в качестве сервиса в приложение
-            // services.AddDbContext<MyPortalContext>(options =>options.UseSqlServer(connection));
-            // // Add framework services.
-			// services.AddMvc()
-			// .AddJsonOptions(opts =>
-			// {
-			// 	opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-			// });
+
+            services.AddDbContext<MyPortalContext>(options =>options.UseSqlServer(connection));
+            services.AddIdentity<EntityUserProfile,IdentityRole>()
+			.AddEntityFrameworkStores<MyPortalContext>()
+			.AddDefaultTokenProviders();
+
+			services.AddTransient<IHttpContextAccessor , HttpContextAccessor>();
+ 			//services.AddGlimpse();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,9 +65,11 @@ namespace MyPortal
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+				//app.UseDatabaseErrorPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
                     HotModuleReplacement = true
                 });
+
             }
             else
             {
@@ -71,7 +77,7 @@ namespace MyPortal
             }
 
             app.UseStaticFiles();
-
+			app.UseIdentity();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
